@@ -5,7 +5,7 @@ const app = express();
 app.use(middleware);
 
 
-// if backend have call back response generate random number. generate random number writw to json
+// if backend have call back, response generate random number. generate random number write to json
 app.get("/url", (req, res, next) => {
     let random = Math.floor(Math.random() * 5) + 1;
     res.status(200).json({ result: random });
