@@ -5,24 +5,20 @@ const app = express();
 app.use(middleware);
 
 
-
+// if backend have call back response generate random number. generate random number writw to json
 app.get("/url", (req, res, next) => {
-    function generat(error, results, fields) {
-        if (error) throw error;
-        let random = Math.floor(Math.random() * 5) + 1
-        results += random.valueOf;
-        res.send(results);
-        console.log(results);
-    };
+    let random = Math.floor(Math.random() * 5) + 1;
+    res.status(200).json({ result: random });
+    console.log(random);
 });
 
 
-app.get('*', function (request, response) {
-    response.sendFile(path.resolve(__dirname, './../public', 'index.html'));
-});
+// app.get('*', function (request, response) {
+//     response.sendFile(path.resolve(__dirname, './../public', 'index.html'));
+// });
 
 
-
+// create server port 3000
 const port = process.env.PORT || 3000;
 app.listen(port, (error) => {
 
